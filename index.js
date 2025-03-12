@@ -67,7 +67,7 @@ const loadcatagoryVideos =(id)=>{
 }
 
 loadCategories();
-// loadVideos();
+loadVideos();
 
 
 // console.log(data)
