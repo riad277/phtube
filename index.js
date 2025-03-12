@@ -9,7 +9,7 @@ function displayCategories(categories) {
     for (let cat of categories) {
         const categoryDiv = document.createElement("div");
         categoryDiv.innerHTML = `
-            <button onclick="loadcatagoryVideos(${cat.category_id})" class="btn btn-sm px-3 bg-[#25252520] hover:bg-[#FF1F3D]  hover:text-white">${cat.category}</button>
+            <button id="${cat.category_id}" onclick="loadcatagoryVideos(${cat.category_id})" class="btn btn-sm px-3 bg-[#25252520] hover:bg-[#FF1F3D]  hover:text-white">${cat.category}</button>
         `;
         categoryContainer.append(categoryDiv);
     }
@@ -25,6 +25,15 @@ function loadVideos(){
 const displayVideos=(videos)=>{
     const videoContainer=document.getElementById("video-container");
     videoContainer.innerHTML="";
+    if(videos.length==0){
+        videoContainer.innerHTML=`
+         <div class="py-20 col-span-full flex flex-col justify-center items-center text-center">
+        <img class="w-[120px]" src="Icon.png" alt="">
+        <h2 class="text-2xl font-bold">Oops! Sorry No <br> Content Here</h2>
+      </div>
+        `;
+        return;
+    }
     videos.forEach(video=>{
         console.log(video)
        const videoCard =document.createElement("div");
